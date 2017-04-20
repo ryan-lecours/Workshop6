@@ -26,8 +26,7 @@ var readDocument = Foo.readDocument;
 function getFeedItemSync(feedItemId) {
   var feedItem = readDocument('feedItems', feedItemId);
   // Resolve 'like' counter.
-  feedItem.likeCounter = feedItem.likeCounter.map((id) =>
-                            readDocument('users', id));
+  feedItem.likeCounter = feedItem.likeCounter.map((id) => readDocument('users', id));
   // Assuming a StatusUpdate. If we had other types of
   // FeedItems in the DB, we would
   // need to check the type and have logic for each type.
@@ -55,13 +54,13 @@ function getFeedData(user) {
 /**
  * Get the feed data for a particular user.
  */
-app.get('/user/:userid/feed', function(req, res) {
-  // URL parameters are stored in req.params
-  var userid = req.params.userid;
-  // Send response.
-  res.send(getFeedData(userid));
-});
 
+ app.get('/user/:userid/feed', function(req, res) {
+   // URL parameters are stored in req.params
+   var userid = req.params.userid;
+   // Send response.
+   res.send(getFeedData(userid));
+ });
 /**
  * Get the user ID from a token. Returns -1 (an invalid ID)
  * if it fails.
