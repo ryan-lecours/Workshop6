@@ -91,17 +91,17 @@ function getUserIdFromToken(authorizationLine) {
 /**
  * Get the feed data for a particular user.
  */
-app.get('/user/:userid/feed', function(req, res) {
-  var userid = req.params.userid;
-  var fromUser = getUserIdFromToken(req.get('Authorization'));
-  // userid is a string. We need it to be a number.
-  // Parameters are always strings.
-  var useridNumber = parseInt(userid, 10);
-  if (fromUser === useridNumber) {
-    // Send response.
-    res.send(getFeedData(userid));
-  } else {
-    // 401: Unauthorized request.
-    res.status(401).end();
-  }
-});
+ app.get('/user/:userid/feed', function(req, res) {
+   var userid = req.params.userid;
+   var fromUser = getUserIdFromToken(req.get('Authorization'));
+   // userid is a string. We need it to be a number.
+   // Parameters are always strings.
+   var useridNumber = parseInt(userid, 10);
+   if (fromUser === useridNumber) {
+     // Send response.
+     res.send(getFeedData(userid));
+   } else {
+     // 401: Unauthorized request.
+     res.status(401).end();
+   }
+ });
