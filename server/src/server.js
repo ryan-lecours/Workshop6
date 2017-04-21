@@ -3,6 +3,10 @@ var express = require('express');
 // Creates an Express server.
 var app = express();
 
+var database = require('./database');
+var bodyParser = require('body-parser');
+
+
 // Defines what happens when it receives the `GET /` request
 
 app.use(express.static('../client/build'));
